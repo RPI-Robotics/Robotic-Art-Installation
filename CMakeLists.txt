@@ -12,7 +12,7 @@ endif()
 project ("RAI")
 
 # Add source to this project's executable.
-add_executable (RAI "RAICMake.cpp" "RAICMake.h")
+add_executable (RAI "RAI.cpp" "RAI.h" "include/BVHNode.h" "include/segmentContainer.h" "include/path.h" "include/e42motor.h" "include/n17motor.h" "include/m57motor.h" "include/armController.h" "include/timingUtility.h" "include/canvasController.h" "include/hardwareController.h" "include/svgParser.h")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET RAI PROPERTY CXX_STANDARD 20)
