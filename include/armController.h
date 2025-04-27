@@ -2,6 +2,7 @@
 #include "e42motor.h"
 #include "n17motor.h"
 #include "path.h"
+#include "penActuator.h"
 #include "point.h"
 
 class ArmController {
@@ -15,6 +16,7 @@ private:
 	const CoordinateSystem arm;
 
 	Path path;
+
 
 	E42Motor rotationMotor;
 	N17Motor radiusMotor;
