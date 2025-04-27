@@ -25,9 +25,11 @@ public:
 	Point asArmII();
 	Point asArmIII();
 	Point asArmIV();
+	Point asSystem(CoordinateSystem system);
 
 	static Point fromRobotGlobal(double x, double y);
 	static Point fromGraphicsOriented(double x, double y);
+	static Point withCoordinateSystem(double x, double y, CoordinateSystem system);
 private:
 	Point(double x, double y, CoordinateSystem system) : x(x), y(y), r(0), theta(0), polar(false), system(system) {};
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "path.h"
+#include <fstream>
 #include <vector>
 
 class SegmentContainer {
