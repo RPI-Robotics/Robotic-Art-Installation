@@ -13,6 +13,9 @@ namespace Constants {
 	//Arm maximum speed, in inches/s
 	static const int ARM_MAX_SPEED = 0;
 
+	//Waiting time on segment find fail, in degrees
+	static const int WAITING_TIME = 45;
+
 	//Initial arm points in graphics oriented coordinates
 	static const std::vector<Point> INITIAL_ARM_POINTS = {};
 }

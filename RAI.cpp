@@ -15,6 +15,7 @@ int main(int argc, char** argv) {
 
 	std::cout << "Parsing file '" << filename << "'..." << std::endl;
 	SegmentContainer::parseSVG(istr);
+	istr.close();
 	std::cout << "Parsing complete." << std::endl;
 
 	std::cout << "Generating paths..." << std::endl;
