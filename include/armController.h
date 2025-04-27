@@ -9,8 +9,8 @@ public:
 	ArmController(CoordinateSystem arm);
 
 	void registerPath(Path& path);
-	void setSetpoint(int frame);
-
+	void setSetpoint(int frame, double phi);
+	void stop();
 private:
 	const CoordinateSystem arm;
 

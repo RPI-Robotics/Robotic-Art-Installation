@@ -7,8 +7,9 @@
 class HardwareContainer {
 public:
 	static void initializeHardware();
-	static void registerPaths();
+	static void registerPaths(std::vector<Path>& paths);
 	static void execute();
+	static void stop();
 
 private:
 	static std::vector<ArmController> armControllers;

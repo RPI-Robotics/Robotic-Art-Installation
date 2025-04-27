@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
 	std::cout << "Paths generated successfully." << std::endl;
 
 	HardwareContainer::initializeHardware();
-	HardwareContainer::registerPaths();
+	HardwareContainer::registerPaths(paths);
 	std::cout << "Hardware initialized." << std::endl;
 
 	std::cout << "Ready to begin drawing." << std::endl;
