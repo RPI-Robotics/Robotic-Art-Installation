@@ -4,6 +4,9 @@
 #include <vector>
 
 namespace Constants {
+	//Canvas dimensions, in inches
+	static const double CANVAS_SIZE = 20.0;
+
 	//Frame rate in hertz
 	static const int FRAME_RATE = 0;
 

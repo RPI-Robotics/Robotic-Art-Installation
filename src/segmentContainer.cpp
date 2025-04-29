@@ -19,6 +19,10 @@ void SegmentContainer::parseSVG(std::ifstream& istr) {
 	double spanX = maxX - minX;
 	double spanY = maxY - minY;
 
+	bool padX = spanY > spanX;
+	double padding = padX ? (spanY - spanX) / 2 : (spanX - spanY) / 2;
+	double conversionFactor = Constants::CANVAS_SIZE / (padX ? spanY : spanX);
+
 	while (istr >> token) {
 		if (token.substr(0, 5) == "<path") {
 			while (token.substr(0, 2) != "d=") {
@@ -36,7 +40,55 @@ void SegmentContainer::parseSVG(std::ifstream& istr) {
 			while (token.substr(0, 2) != "x=") {
 				istr >> token;
 			}
+			double x = std::stod(token.substr(3, token.size() - 1));
+			istr >> token;
+			double y = std::stod(token.substr(3, token.size() - 1));
+			istr >> token;
+			double width = std::stod(token.substr(3, token.size() - 1));
+			istr >> token;
+			double height = std::stod(token.substr(3, token.size() - 3));
 
+			if (padX) {
+				x += padding;
+			}
+			else {
+				y += padding;
+			}
+
+			Point topLeft = Point::fromGraphicsOriented(x * conversionFactor - (Constants::CANVAS_SIZE / 2), y * conversionFactor - (Constants::CANVAS_SIZE / 2));
+			Point topRight = Point::fromGraphicsOriented((x + width) * conversionFactor - (Constants::CANVAS_SIZE / 2), y * conversionFactor - (Constants::CANVAS_SIZE / 2));
+			Point bottomLeft = Point::fromGraphicsOriented(x * conversionFactor - (Constants::CANVAS_SIZE / 2), (y + height) * conversionFactor - (Constants::CANVAS_SIZE / 2));
+			Point bottomRight = Point::fromGraphicsOriented((x + width) * conversionFactor - (Constants::CANVAS_SIZE / 2), (y + height) * conversionFactor - (Constants::CANVAS_SIZE / 2));
+
+			//Top/bottom segments
+			if (topLeft.getX() < 0 && topRight.getX() > 0) {
+				Point yIntercept = Point::fromGraphicsOriented(0, topLeft.getY());
+				segments.push_back(VectorSegment(topLeft, yIntercept));
+				segments.push_back(VectorSegment(yIntercept, topRight));
+
+				Point yInterceptBottom = Point::fromGraphicsOriented(0, bottomLeft.getY());
+				segments.push_back(VectorSegment(bottomLeft, yInterceptBottom));
+				segments.push_back(VectorSegment(yInterceptBottom, bottomRight));
+			}
+			else {
+				segments.push_back(VectorSegment(topLeft, topRight));
+				segments.push_back(VectorSegment(bottomLeft, bottomRight));
+			}
+
+			//Side segments
+			if (topLeft.getY() > 0 && bottomLeft.getY() < 0) {
+				Point xIntercept = Point::fromGraphicsOriented(topLeft.getX(), 0);
+				segments.push_back(VectorSegment(topLeft, xIntercept));
+				segments.push_back(VectorSegment(xIntercept, bottomLeft));
+
+				Point xInterceptRight = Point::fromGraphicsOriented(bottomLeft.getX(), 0);
+				segments.push_back(VectorSegment(topRight, xInterceptRight));
+				segments.push_back(VectorSegment(xInterceptRight, bottomRight));
+			}
+			else {
+				segments.push_back(VectorSegment(topLeft, bottomLeft));
+				segments.push_back(VectorSegment(topRight, bottomRight));
+			}
 		}
 	}
 }

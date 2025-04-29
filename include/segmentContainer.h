@@ -3,6 +3,7 @@
 #include "BVHNode.h"
 #include "path.h"
 #include "segment.h"
+#include "vectorSegment.h"
 #include <algorithm>
 #include <fstream>
 #include <string>
@@ -17,6 +18,6 @@ private:
 	static int assignedSegments;
 
 	static std::vector<Path> paths;
-	static std::vector<Segment*> segments;
+	static std::vector<Segment> segments;
 	static BVHNode* tree;
 };
