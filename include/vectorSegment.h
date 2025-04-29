@@ -1,11 +1,13 @@
 #pragma once
 #include "segment.h"
+#include <cmath>
+#include <iostream>
 
 class VectorSegment : public Segment {
 public:
 	VectorSegment(Point& p0, Point& p1, bool isTravel = false);
 
-	void operator<< (std::ofstream& ostr) const;
+	void print() const;
 
 	bool isTravelSegment() const { return isTravel; }
 	double getArcLength() const { return arcLength; }

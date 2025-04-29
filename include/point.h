@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 enum CoordinateSystem {
 	GRAPHICS_ORIENTED,
@@ -26,6 +27,8 @@ public:
 	Point asArmIII();
 	Point asArmIV();
 	Point asSystem(CoordinateSystem system);
+
+	void print() const;
 
 	static Point fromRobotGlobal(double x, double y);
 	static Point fromGraphicsOriented(double x, double y);
