@@ -1,8 +1,10 @@
 #pragma once
 #include "point.h"
+#include "segment.h"
 
 class Path {
 public:
+	Path();
 	Path(Point initialPoint);
 
 	double getCumulativeArcLength() const { return cumulativeArcLength; }
@@ -11,6 +13,10 @@ public:
 	void addWaitingSegment();
 	void generateTravelSegment(Point point);
 	void returnToInitialPoint();
+
+	bool inMotionAtFrame(int frame);
+	Point pointAtFrame(int frame, double phi);
+	bool penActiveAtFrame(int frame);
 
 	bool operator< (const Path& rhs) const { return cumulativeArcLength < rhs.cumulativeArcLength; }
 private:

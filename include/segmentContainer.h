@@ -3,8 +3,10 @@
 #include "BVHNode.h"
 #include "path.h"
 #include "segment.h"
+#include "vectorSegment.h"
 #include <algorithm>
 #include <fstream>
+#include <string>
 #include <vector>
 
 class SegmentContainer {
