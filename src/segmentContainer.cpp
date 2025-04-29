@@ -63,31 +63,31 @@ void SegmentContainer::parseSVG(std::ifstream& istr) {
 			//Top/bottom segments
 			if (topLeft.getX() < 0 && topRight.getX() > 0) {
 				Point yIntercept = Point::fromGraphicsOriented(0, topLeft.getY());
-				segments.push_back(VectorSegment(topLeft, yIntercept));
-				segments.push_back(VectorSegment(yIntercept, topRight));
+				segments.push_back(new VectorSegment(topLeft, yIntercept));
+				segments.push_back(new VectorSegment(yIntercept, topRight));
 
 				Point yInterceptBottom = Point::fromGraphicsOriented(0, bottomLeft.getY());
-				segments.push_back(VectorSegment(bottomLeft, yInterceptBottom));
-				segments.push_back(VectorSegment(yInterceptBottom, bottomRight));
+				segments.push_back(new VectorSegment(bottomLeft, yInterceptBottom));
+				segments.push_back(new VectorSegment(yInterceptBottom, bottomRight));
 			}
 			else {
-				segments.push_back(VectorSegment(topLeft, topRight));
-				segments.push_back(VectorSegment(bottomLeft, bottomRight));
+				segments.push_back(new VectorSegment(topLeft, topRight));
+				segments.push_back(new VectorSegment(bottomLeft, bottomRight));
 			}
 
 			//Side segments
 			if (topLeft.getY() > 0 && bottomLeft.getY() < 0) {
 				Point xIntercept = Point::fromGraphicsOriented(topLeft.getX(), 0);
-				segments.push_back(VectorSegment(topLeft, xIntercept));
-				segments.push_back(VectorSegment(xIntercept, bottomLeft));
+				segments.push_back(new VectorSegment(topLeft, xIntercept));
+				segments.push_back(new VectorSegment(xIntercept, bottomLeft));
 
 				Point xInterceptRight = Point::fromGraphicsOriented(bottomLeft.getX(), 0);
-				segments.push_back(VectorSegment(topRight, xInterceptRight));
-				segments.push_back(VectorSegment(xInterceptRight, bottomRight));
+				segments.push_back(new VectorSegment(topRight, xInterceptRight));
+				segments.push_back(new VectorSegment(xInterceptRight, bottomRight));
 			}
 			else {
-				segments.push_back(VectorSegment(topLeft, bottomLeft));
-				segments.push_back(VectorSegment(topRight, bottomRight));
+				segments.push_back(new VectorSegment(topLeft, bottomLeft));
+				segments.push_back(new VectorSegment(topRight, bottomRight));
 			}
 		}
 	}

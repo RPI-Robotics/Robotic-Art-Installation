@@ -18,6 +18,6 @@ private:
 	static int assignedSegments;
 
 	static std::vector<Path> paths;
-	static std::vector<Segment> segments;
+	static std::vector<Segment*> segments;
 	static BVHNode* tree;
 };

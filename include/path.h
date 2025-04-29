@@ -1,5 +1,6 @@
 #pragma once
 #include "point.h"
+#include "segment.h"
 
 class Path {
 public:
