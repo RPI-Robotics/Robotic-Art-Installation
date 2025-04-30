@@ -1,3 +1,4 @@
+#include "../constants.h"
 #include "../include/point.h"
 
 void Point::print() const {
@@ -35,6 +36,7 @@ Point Point::asRobotGlobal(double phi) {
 	case ARM_II:
 	case ARM_III:
 	case ARM_IV:
+	default:
 		return Point(x, y, ROBOT_GLOBAL);
 	}
 }
@@ -62,6 +64,7 @@ Point Point::asArm(CoordinateSystem arm) {
 	case ARM_II:
 	case ARM_III:
 	case ARM_IV:
+	default:
 		return Point(x, y, ROBOT_GLOBAL);
 	}
 }

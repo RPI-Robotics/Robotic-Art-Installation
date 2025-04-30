@@ -20,7 +20,7 @@ namespace Constants {
 	static const int WAITING_TIME = 45;
 
 	//Waiting time converted to arc length in inches, for sorting purposed
-	static const double WAITING_TIME_ARC_LENGTH = WAITING_TIME / 360 / CANVAS_ROTATION_SPEED / ARM_MAX_SPEED;
+	static const double WAITING_TIME_ARC_LENGTH = WAITING_TIME / 360.0 / CANVAS_ROTATION_SPEED / ARM_MAX_SPEED;
 
 	//Initial arm points in graphics oriented coordinates
 	static const std::vector<Point> INITIAL_ARM_POINTS = {};
