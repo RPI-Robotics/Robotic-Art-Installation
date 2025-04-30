@@ -7,13 +7,16 @@ class VectorSegment : public Segment {
 public:
 	VectorSegment(Point& p0, Point& p1, bool isTravel = false);
 
+	Point calculate(double t) const { return Point::fromGraphicsOriented(x0 + a * t, y0 + b * t); }
+
 	void print() const;
 
 	bool isTravelSegment() const { return isTravel; }
+	bool isWaitSegment() const { return false; }
 	double getArcLength() const { return arcLength; }
+	Point getInitialPoint() const { return p0; }
+	Point getFinalPoint() const { return p1; }
 private:
-	Point calculate(double t) const { return Point::fromGraphicsOriented(x0 + a * t, y0 + b * t); }
-
 	Point p0;
 	Point p1;
 

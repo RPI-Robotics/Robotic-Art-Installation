@@ -21,7 +21,7 @@ public:
 	CoordinateSystem getSystem();
 
 	Point asGraphicsOriented();
-	Point asRobotGlobal();
+	Point asRobotGlobal(double phi);
 	Point asArmI();
 	Point asArmII();
 	Point asArmIII();
@@ -29,6 +29,8 @@ public:
 	Point asSystem(CoordinateSystem system);
 
 	void print() const;
+
+	static double distanceBetween(Point& p0, Point& p1);
 
 	static Point fromRobotGlobal(double x, double y);
 	static Point fromGraphicsOriented(double x, double y);

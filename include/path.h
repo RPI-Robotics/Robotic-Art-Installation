@@ -1,18 +1,21 @@
 #pragma once
+#include "constants.h"
 #include "point.h"
 #include "segment.h"
+#include "vectorSegment.h"
+#include "waitSegment.h"
+#include <vector>
 
 class Path {
 public:
-	Path();
 	Path(Point initialPoint);
 
 	double getCumulativeArcLength() const { return cumulativeArcLength; }
 
-	void addSegment(Segment* segment);
-	void addWaitingSegment();
-	void generateTravelSegment(Point point);
+	void addDrawSegment(Segment* segment);
+	void addTravelSegment(Point point);
 	void returnToInitialPoint();
+	void addWaitSegment();
 
 	bool inMotionAtFrame(int frame);
 	Point pointAtFrame(int frame, double phi);
@@ -20,7 +23,12 @@ public:
 
 	bool operator< (const Path& rhs) const { return cumulativeArcLength < rhs.cumulativeArcLength; }
 private:
+	Segment* segmentAtFrame(int frame);
+
 	Point initialPoint;
 	Point finalPoint;
 	double cumulativeArcLength;
+
+	int currentSegmentIndex;
+	std::vector<Segment*> segments;
 };
