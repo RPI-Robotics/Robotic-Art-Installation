@@ -28,13 +28,13 @@ void SegmentContainer::parseSVG(std::ifstream& istr) {
 			while (token.substr(0, 2) != "d=") {
 				istr >> token;
 			}
-
+			//TODO: parse paths
 		}
 		else if (token.substr(0, 5) == "<poly") {
 			while (token.substr(0, 7) != "points=") {
 				istr >> token;
 			}
-
+			//TODO: parse polys
 		}
 		else if (token.substr(0, 5) == "<rect") {
 			while (token.substr(0, 2) != "x=") {

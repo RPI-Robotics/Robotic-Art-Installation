@@ -8,7 +8,7 @@ void ArmController::setSetpoint(int frame, double phi) {
 		return;
 	}
 
-	Point setpoint = path.pointAtFrame(frame, phi).asSystem(arm);
+	Point setpoint = path.pointAtFrame(frame, phi).asArm(arm);
 
 	rotationMotor.setPositionAbsolute(setpoint.getTheta());
 	radiusMotor.setPositionAbsolute(setpoint.getR());

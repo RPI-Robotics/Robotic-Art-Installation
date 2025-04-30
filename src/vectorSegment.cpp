@@ -5,7 +5,7 @@ VectorSegment::VectorSegment(Point& p0, Point& p1, bool isTravel) : p0(p0), p1(p
 	y0 = p0.getY();
 	a = p1.getX() - x0;
 	b = p1.getY() - y0;
-	arcLength = std::sqrt(a * a - b * b);
+	arcLength = std::sqrt(a * a + b * b);
 };
 
 void VectorSegment::print() const {

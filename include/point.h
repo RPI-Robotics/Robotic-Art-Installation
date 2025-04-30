@@ -1,4 +1,7 @@
 #pragma once
+#define _USE_MATH_DEFINES 
+#include "constants.h"
+#include <cmath>
 #include <iostream>
 
 enum CoordinateSystem {
@@ -14,19 +17,15 @@ class Point {
 public:
 	Point() : x(0), y(0), r(0), theta(0), polar(false), system(ROBOT_GLOBAL) {};
 
-	double getX();
-	double getY();
+	double getX() const { return x; }
+	double getY() const { return y; }
 	double getR();
 	double getTheta();
-	CoordinateSystem getSystem();
+	CoordinateSystem getSystem() const { return system; }
 
-	Point asGraphicsOriented();
+	//Point asGraphicsOriented(); TODO : Add if necessary
 	Point asRobotGlobal(double phi);
-	Point asArmI();
-	Point asArmII();
-	Point asArmIII();
-	Point asArmIV();
-	Point asSystem(CoordinateSystem system);
+	Point asArm(CoordinateSystem arm);
 
 	void print() const;
 

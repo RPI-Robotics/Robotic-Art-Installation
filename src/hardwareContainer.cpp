@@ -4,8 +4,8 @@ void HardwareContainer::initializeHardware() {
 	for (int i = 0; i < 4; ++i) {
 		armControllers.push_back(ArmController((CoordinateSystem)(i + 2)));
 	}
-	CanvasController();
-	TimingUtility();
+	canvasController = CanvasController();
+	timingUtility = TimingUtility();
 }
 
 void HardwareContainer::registerPaths(std::vector<Path>& paths) {
