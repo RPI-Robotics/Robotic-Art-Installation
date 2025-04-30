@@ -11,10 +11,10 @@ namespace Constants {
 	static const int FRAME_RATE = 0;
 
 	//Canvas rotation speed, in rot/s
-	static const double CANVAS_ROTATION_SPEED = 0;
+	static const double CANVAS_ROTATION_SPEED = 0.1;
 
 	//Arm maximum speed, in inches/s
-	static const int ARM_MAX_SPEED = 0;
+	static const double ARM_MAX_SPEED = 3.0;
 
 	//Waiting time on segment find fail, in degrees
 	static const int WAITING_TIME = 45;

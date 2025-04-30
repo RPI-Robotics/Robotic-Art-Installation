@@ -1,6 +1,5 @@
 #include "../include/path.h"
 
-
 Path::Path(Point initialPoint) : initialPoint(initialPoint), finalPoint(initialPoint) {
 	cumulativeArcLength = 0;
 	currentSegmentIndex = 0;

@@ -1,5 +1,5 @@
 #pragma once
-#include "constants.h"
+#include "../constants.h"
 #include "point.h"
 #include "segment.h"
 #include "vectorSegment.h"
@@ -8,6 +8,7 @@
 
 class Path {
 public:
+	Path() {}; //Placeholder for before generation
 	Path(Point initialPoint);
 
 	double getCumulativeArcLength() const { return cumulativeArcLength; }
